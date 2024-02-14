@@ -1,0 +1,96 @@
+.TaskList {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.TaskList h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.TaskList input[type="text"],
+.TaskList textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.TaskList button {
+  padding: 12px 24px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.TaskList button:hover {
+  background-color: #0056b3;
+}
+
+.TaskList ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.TaskList li {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.TaskList span {
+  margin-right: 10px;
+}
+
+.TaskList p {
+  margin: 5px 0;
+}
+
+.TaskList button.edit {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.TaskList button.delete {
+  background-color: #dc3545;
+}
+
+@media only screen and (max-width: 600px) {
+  .TaskList {
+    padding: 10px;
+  }
+  
+  .TaskList h1 {
+    font-size: 24px;
+  }
+  
+  .TaskList input[type="text"],
+  .TaskList textarea {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .TaskList button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .TaskList li {
+    padding: 10px;
+  }
+}
