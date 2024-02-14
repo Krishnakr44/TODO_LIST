@@ -13,18 +13,22 @@ function Task() {
 
   const toggleCompleted = async (id) => {
     try {
-      await axios.put(`http://localhost:3000/tasks/${id}/toggle-completed`);
-
-      setTasks(
-        tasks.map((task) =>
-          task.id === id ? { ...task, completed: !task.completed } : task
-        )
-      );
+      // Fetch the current completion status of the task
+      const taskToUpdate = tasks.find(task => task.id === id);
+      const updatedCompletedStatus = !taskToUpdate.completed;
+  
+      await axios.put(`http://localhost:3000/tasks/${id}`, {
+        completed: updatedCompletedStatus
+      });
+      
+      setTasks(tasks.map(task => 
+        task.id === id ? { ...task, completed: updatedCompletedStatus } : task
+      ));
     } catch (error) {
       console.error(error);
     }
   };
-
+  
   const fetchTasks = async () => {
     try {
       const response = await axios.get("http://localhost:3000/tasks");
@@ -35,6 +39,11 @@ function Task() {
   };
 
   const addTask = async () => {
+     // Check if either title or description is empty
+  if (!title.trim() || !description.trim()) {
+    alert("Please enter both a title and a description.");
+    return; 
+  }
     try {
       const response = await axios.post("http://localhost:3000/tasks", {
         title,
@@ -108,12 +117,15 @@ function Task() {
       <h1>Task Management App</h1>
       <div>
         <input
+
           type="text"
+          required
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <textarea
+          required
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
